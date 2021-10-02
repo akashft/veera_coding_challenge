@@ -1,4 +1,4 @@
-# veera_coding_challenge
+# Veera Coding Challenge
 60 min live coding challenge for Engineering Interviews
 
 ## Problem statement
