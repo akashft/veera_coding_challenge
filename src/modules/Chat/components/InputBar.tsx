@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   ActionSheetIOS,
+  KeyboardAvoidingView,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -232,32 +234,35 @@ const InputBar = ({
   const handleMessageChange = content => setMessage(content);
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.plusButton}
-        onPress={handleShowActionSheet}>
-        <Text>{'Plus'}</Text>
-      </TouchableOpacity>
-      <View style={styles.textInputView}>
-        <TextInput
-          multiline
-          placeholder={'Message...'}
-          onChangeText={content => handleMessageChange(content)}
-          value={message}
-        />
+    <>
+      <SafeAreaView />
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.plusButton}
+          onPress={handleShowActionSheet}>
+          <Text>{'Plus'}</Text>
+        </TouchableOpacity>
+        <View style={styles.textInputView}>
+          <TextInput
+            multiline
+            placeholder={'Message...'}
+            onChangeText={content => handleMessageChange(content)}
+            value={message}
+          />
+        </View>
+        <TouchableOpacity
+          style={styles.sendButton}
+          onPressIn={handleStartVoiceNote}
+          onPressOut={handleEndVoiceNote}>
+          <Text>{'Mic'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.sendButton}
+          onPress={handleSendUserMessage}>
+          <Text>{'Send'}</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={styles.sendButton}
-        onPressIn={handleStartVoiceNote}
-        onPressOut={handleEndVoiceNote}>
-        <Text>{'Mic'}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.sendButton}
-        onPress={handleSendUserMessage}>
-        <Text>{'Send'}</Text>
-      </TouchableOpacity>
-    </View>
+    </>
   );
 };
 

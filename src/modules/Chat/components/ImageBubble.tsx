@@ -19,16 +19,14 @@ const ImageBubble = ({
   if (!isReceived) {
     return (
       <View style={styles.sentBubble} key={messageId}>
-        <Lightbox style={{ alignItems: 'center', justifyContent: 'center' }}>
-          <FastImage
-            style={{ width: 200, height: 200 }}
-            source={{
-              uri: url,
-              priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-        </Lightbox>
+        <FastImage
+          style={{ width: 200, height: 200 }}
+          source={{
+            uri: url,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+        />
       </View>
     );
   } else {
