@@ -45,7 +45,7 @@ const InputBar = ({
     params.message = message;
     params.customType = CUSTOM_MESSAGE_TYPE_VOICE_NOTE;
 
-    channel.sendUserMessage(params, (msg, error) => {
+    channel.sendUserMessage(params, msg => {
       console.log(msg);
       setMessage('');
       if ('message' in msg && 'sender' in msg) {
