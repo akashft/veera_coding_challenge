@@ -13,5 +13,5 @@ Please see this video for requirements and instructions
 1. Clone the repository.
 2. Complete your project as described within your local repository.
 3. Ensure everything you want to commit is committed.
-4. Create a git bundle: git bundle create your_name.bundle --all
+4. Create a git bundle: `git bundle create your_name.bundle --all`
 5. Email the bundle file to nimeet@veerahealth.com and CC shivaninair@veerahealth.com.
