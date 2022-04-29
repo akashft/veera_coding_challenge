@@ -1,7 +1,8 @@
 # Veera Coding Challenge
 
 Coding challenge for Engineering Interviews. 
-Please see this video for requirements and instructions
+
+Please see [this video](https://www.loom.com/share/293e7ba36b1d48a5b25e4d08d3fd7dc5) for requirements and instructions.
 
 ## Steps to run
 
@@ -14,4 +15,4 @@ Please see this video for requirements and instructions
 2. Complete your project as described within your local repository.
 3. Ensure everything you want to commit is committed.
 4. Create a git bundle: `git bundle create your_name.bundle --all`
-5. Email the bundle file to nimeet@veerahealth.com and CC shivaninair@veerahealth.com.
+5. Email the bundle file to nimeet@veerahealth.com and CC shivaninair@veerahealth.com. Also mention the time you took to solve the challenge.
