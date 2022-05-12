@@ -185,23 +185,25 @@ const InputBar = ({
     params.thumbnailSizes = [{ maxWidth: 100, maxHeight: 100 }];
     params.customType = CUSTOM_MESSAGE_TYPE_FILE_FROM_LIB;
 
+    dispatch(
+      newMessage({
+        sender: {
+          userId: userId,
+          isActive: isActive,
+          nickname: nickname,
+        },
+        messageType: 'file',
+        messageId: 1,
+        parentMessageId: 2,
+        customType: CUSTOM_MESSAGE_TYPE_FILE_FROM_LIB,
+        url: asset.uri,
+        createdAt: 39850825,
+      }),
+    );
+
     channel.sendFileMessage(params, (msg, error) => {
       console.log(error, msg);
-      dispatch(
-        newMessage({
-          sender: {
-            userId: userId,
-            isActive: isActive,
-            nickname: nickname,
-          },
-          messageType: msg.messageType,
-          messageId: msg.messageId,
-          parentMessageId: msg.parentMessageId,
-          customType: msg.customType,
-          url: msg.url,
-          createdAt: msg.createdAt,
-        }),
-      );
+      
     });
   };
 

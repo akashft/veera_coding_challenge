@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Lightbox from 'react-native-lightbox-v2';
@@ -9,36 +9,47 @@ interface IImageBubble {
   messageId: number;
   createdAt: number;
 }
-
 const ImageBubble = ({
   isReceived,
   url,
   messageId,
   createdAt,
 }: IImageBubble) => {
+
+  const [loading, setLoading] = useState(true);
   if (!isReceived) {
     return (
       <View style={styles.sentBubble} key={messageId}>
+        {loading &&
+          <Text >Loading...</Text>}
+
         <FastImage
           style={{ width: 200, height: 200 }}
           source={{
             uri: url,
             priority: FastImage.priority.normal,
           }}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.stretch}
+          onLoadStart={() => setLoading(true)}
+          onLoadEnd={() => setLoading(false)}
         />
       </View>
     );
   } else {
     return (
       <View style={styles.receivedBubble} key={messageId}>
+        {loading &&
+          <Text >Loading...</Text>
+        }
         <FastImage
           style={{ width: 200, height: 200 }}
           source={{
             uri: url,
             priority: FastImage.priority.normal,
           }}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.stretch}
+          onLoadStart={() => setLoading(true)}
+          onLoadEnd={() => setLoading(false)}
         />
       </View>
     );
@@ -49,29 +60,23 @@ const styles = StyleSheet.create({
   receivedBubble: {
     backgroundColor: '#dedede',
     padding: 10,
-    marginTop: 5,
-    marginLeft: '5%',
     maxWidth: '50%',
     alignSelf: 'flex-start',
     //maxWidth: 500,
     //padding: 14,
-    marginBottom: 20,
 
-    //alignItems:"center",
-    borderRadius: 20,
+    //alignItems:"center"
   },
   sentBubble: {
     backgroundColor: '#0078fe',
-    padding: 10,
+    marginTop: 10,
+    padding: 4,
     marginLeft: '45%',
     //marginBottom: 15,
-    marginTop: 5,
-    marginRight: '5%',
+
     maxWidth: '50%',
     alignSelf: 'flex-end',
     //maxWidth: 500,
-    borderRadius: 20,
-    marginBottom: 20,
   },
   rightArrow: {
     position: 'absolute',
@@ -116,3 +121,4 @@ const styles = StyleSheet.create({
 });
 
 export default ImageBubble;
+
